@@ -2,7 +2,17 @@ import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import axios from "axios";
 import "leaflet/dist/leaflet.css";
-
+interface country {
+  countryInfo: {
+    _id: "";
+    lat: number;
+    long: number;
+  };
+  country: string;
+  active: number;
+  recovered: number;
+  deaths: number;
+}
 export default function App() {
   const [countriesData, setCountriesData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -24,7 +34,6 @@ export default function App() {
     fetchData();
   }, []);
 
-  const center = [20, 0];
   const zoom = 2;
 
   return (
@@ -33,13 +42,13 @@ export default function App() {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <MapContainer center={center} zoom={zoom} className="w-full h-80">
+        <MapContainer center={[20, 0]} zoom={zoom} className="w-full h-80">
           <TileLayer
             className="absolute"
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
-          {countriesData.map((country) => (
+          {countriesData.map((country: country) => (
             <Marker
               key={country.countryInfo._id}
               position={[country.countryInfo.lat, country.countryInfo.long]}

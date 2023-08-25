@@ -4,7 +4,7 @@ import { Header } from "./components/header/Header.js";
 import Footer from "./components/footer/Footer.js";
 import { Home } from "./pages/home/Home.js";
 import { Contact } from "./pages/contact/Contact.js";
-import ChartsAndMap from "./pages/chartsandmap/ChartsAndMap";
+import ChartsAndMap from "./pages/chartsandmap/ChartsAndMap.js";
 function App() {
   return (
     <>
